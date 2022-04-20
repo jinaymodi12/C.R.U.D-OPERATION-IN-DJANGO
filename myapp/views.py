@@ -31,4 +31,6 @@ def edit(request,pk):
   
     return render(request,'edit.html',{'uid':uid})
     
+def search(request):
+    
 
