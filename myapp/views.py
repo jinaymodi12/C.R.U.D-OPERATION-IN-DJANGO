@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import*
 # Create your views here.
 def index(request):
@@ -16,7 +16,7 @@ def index(request):
 def delete(request,pk):
     uid=User.objects.get(id=pk)
     uid.delete()
-    return render(request,'index.html',{'uid':uid})
+    return redirect('index')
 
 def edit(request,pk):
     uid=User.objects.get(id=pk)
@@ -25,12 +25,11 @@ def edit(request,pk):
         uid.lastname=request.POST['lastname']
         uid.country=request.POST['country']
         uid.save()
-        return render(request,'index.html')
+        return redirect('index')
 
 
   
     return render(request,'edit.html',{'uid':uid})
     
-def search(request):
     
 
